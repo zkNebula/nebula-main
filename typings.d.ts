@@ -36,7 +36,7 @@ export type Socials = {
 }
 
 export type User = {
-    name: string,
+    name?: string,
     address?: string,
     image: StaticImageData
 }
@@ -55,4 +55,10 @@ export type Proposals = {
     endDate: string,
     quorum: string,
     status: string
+}
+
+export type Votes = {
+    user: User,
+    coins: string,
+    option: string
 }

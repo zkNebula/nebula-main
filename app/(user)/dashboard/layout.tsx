@@ -13,7 +13,7 @@ export default function RootLayout({
   return (
     <>
       <Navigation 
-        scrollPositionProp={5}
+        scrollPositionProp
         showLinks={false} 
         border 
       />

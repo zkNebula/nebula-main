@@ -31,7 +31,7 @@ const NotificationBox = ({ type="warning" }: Props) => {
   }
   
   return (
-    <blockquote className={`p-[22px] w-full rounded-[12px] border border-tertiary-900 ${notificationStyles}`}>
+    <blockquote className={`p-[22px] w-full rounded-[12px] border border-tertiary-700 ${notificationStyles}`}>
       {content}
     </blockquote>
   )

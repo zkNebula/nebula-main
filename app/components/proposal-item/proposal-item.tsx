@@ -6,7 +6,7 @@ import ProposalOptionItem from '../proposal-option-item/proposal-option-item';
 
 const ProposalItem = ({ user, title, content, options, endDate, quorum, status }: Proposals) => {
   return (
-    <blockquote className='rounded-[12px] border border-tertiary-900 py-6 px-8 space-y-4'>
+    <blockquote className='rounded-[12px] border border-tertiary-700 py-6 px-8 space-y-4'>
         <header className='flex justify-between items-center'>
             {/* Profile */}
             <Profile {...user} />

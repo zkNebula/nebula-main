@@ -7,7 +7,8 @@ type Props = {
     name: string,
     placeholder?: string,
     value: string,
-    onChange: (e: any) => void
+    onChange: (e: any) => void,
+    required?: boolean
 }
 
 const FormInput = ({ label, error, onChange, ...otherInputProps }: Props) => {

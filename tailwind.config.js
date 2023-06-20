@@ -33,6 +33,7 @@ module.exports = {
       colors: {
         background: "#08161C",
         border: "#667085",
+        gray: "#AFB8C1",
         primary: {
           900: "#2EC7E9",
           border: "#2B2D42",
@@ -75,6 +76,7 @@ module.exports = {
           }
         },
         tertiary: {
+          700: "#0091FF",
           900: "#2874E7",
           shade: {
             900: "#3d82e9"

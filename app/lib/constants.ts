@@ -3,7 +3,8 @@ import {
 	Links, 
 	FeatureProps, 
 	ListItemProps, 
-	Socials 
+	Socials, 
+	Votes
 } from '@/typings';
 import HeroImage from '@/public/images/hero-image.png';
 import RocketIcon from '@/public/svg/rocket.svg';
@@ -297,4 +298,71 @@ export const proposals =  [
 		quorum: "300% quorum reached",
 		status: "closed"
 	},
+];
+
+export const votes: Votes[] = [
+	{
+		user: {
+			image: ProfileImage,
+			address: "0xA2dC...697B"
+		},
+		coins: '1.3M Nebula',
+		option: "Option 3"
+	},
+	{
+		user: {
+			image: ProfileImage,
+			address: "0xA2dC...697B"
+		},
+		coins: '1.3M Nebula',
+		option: "Option 3"
+	},
+	{
+		user: {
+			image: ProfileImage,
+			address: "0xA2dC...697B"
+		},
+		coins: '1.3M Nebula',
+		option: "Option 3"
+	},
+	{
+		user: {
+			image: ProfileImage,
+			address: "0xA2dC...697B"
+		},
+		coins: '1.3M Nebula',
+		option: "Option 3"
+	},
+	{
+		user: {
+			image: ProfileImage,
+			address: "0xA2dC...697B"
+		},
+		coins: '1.3M Nebula',
+		option: "Option 3"
+	},
+	{
+		user: {
+			image: ProfileImage,
+			address: "0xA2dC...697B"
+		},
+		coins: '1.3M Nebula',
+		option: "Option 3"
+	},
+	{
+		user: {
+			image: ProfileImage,
+			address: "0xA2dC...697B"
+		},
+		coins: '1.3M Nebula',
+		option: "Option 3"
+	},
+	{
+		user: {
+			image: ProfileImage,
+			address: "0xA2dC...697B"
+		},
+		coins: '1.3M Nebula',
+		option: "Option 3"
+	}
 ];

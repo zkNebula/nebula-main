@@ -9,7 +9,7 @@ const Profile = ({ name, address, image }: User) => {
             src={image}
             alt={name + "-profile"}
         />
-        <p className='text-[.97rem]'>{name ?? address}</p>
+        <p className='text-[.94rem] text-white/90'>{name ?? address}</p>
     </div>
   )
 }

@@ -90,14 +90,14 @@ export default function Home() {
               src={RectangleImage}
               alt="my-project"
               height={331}
-              className='w-2/4 xs:w-[45%] phone-sm:w-[57%] sm:w-2/3 md:w-5/6 lg:w-max object-fit rotate-6'
+              className='w-2/4 xs:w-[45%] phone-sm:w-[47%] sm:w-1/3 md:w-5/6 lg:w-max object-fit rotate-6'
             />
 
             <Image 
               src={RocketImage}
               alt="my-project"
               height={331}
-              className='w-2/4 xs:w-[45%] phone-sm:w-[57%] sm:w-2/3 md:w-5/6 lg:w-max object-fit absolute -top-[15%] left-[30%] phone-sm:left-[25%] sm:left-4 -rotate-4'
+              className='w-2/4 xs:w-[45%] phone-sm:w-[47%] sm:w-1/3 md:w-5/6 lg:w-max object-fit absolute -top-[15%] left-[30%] phone-sm:left-[30%] sm:left-4 -rotate-4'
             />
           </figure>
         </div>
@@ -123,7 +123,7 @@ export default function Home() {
             src={MyProjectImage}
             alt="my-project"
             height={331}
-            className='w-[45%] phone-sm:w-[57%] sm:w-2/3 md:w-[35%] lg:w-max object-fit -rotate-15'
+            className='w-[45%] phone-sm:w-[47%] sm:w-1/3 md:w-[35%] lg:w-max object-fit -rotate-15'
           />
 
           {/* Content */}
@@ -192,7 +192,7 @@ export default function Home() {
               src={BoxImage}
               alt="my-project"
               height={251}
-              className='w-[45%] phone-sm:w-[57%] sm:w-2/3 md:w-[35%] lg:w-max object-fit -rotate-15'
+              className='w-[45%] phone-sm:w-[47%] sm:w-1/3 md:w-[35%] lg:w-max object-fit -rotate-15'
             />
 
             {/* Content */}
@@ -232,7 +232,7 @@ export default function Home() {
       </section>
 
       {/* Company Feature */}
-      <section className='py-5 phone-sm:py-4 sm:py-0 sm:h-[38vh] md:h-[40vh] lg:h-[44vh] bg-white flex flex-col justify-center items-center gap-y-3 sm:gap-y-5 md:gap-y-7'>
+      <section className='py-5 phone-sm:py-4 sm:py-0 sm:h-[35vh] md:h-[40vh] lg:h-[44vh] bg-white flex flex-col justify-center items-center gap-y-3 sm:gap-y-5 md:gap-y-7'>
         <h3 className='text-black font-extrabold text-xl sm:text-3xl lg:text-4xl'>Supported by</h3>
         <Image 
           src={zkSyncLogo}

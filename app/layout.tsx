@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 import { Syne, Roboto } from 'next/font/google';
 import localFont from 'next/font/local';
+import Providers from './providers';
 
 const inter = localFont({
   src: [
@@ -65,7 +66,9 @@ export default function RootLayout({
         <link rel="icon" href='../../_next/static/media/favicon-large.3b6a782a.png' />
       </head>
       <body className={`${inter.className} ${syne.className} selection:bg-accent-shade-800 selection:text-black ${roboto.className} font-sans bg-background text-white`}>          
+        <Providers>
           {children}
+        </Providers>
       </body>
     </html>
   )

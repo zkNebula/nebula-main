@@ -14,26 +14,26 @@ import Button from '../button/button';
 
 type Props = {
 	showLinks?: boolean;
-	scrollPositionProp?: number;
+	scrollPositionProp?: boolean;
 	border?: boolean
 }
 
 const Navigation = ({ showLinks=true, border=false, scrollPositionProp }: Props) => {
 	const [isActive, setIsActive] = useState<boolean>(false);
 	const [isOffsetOpen, setIsOffsetOpen] = useState<boolean>(false);
-	const [scrollPosition, setScrollPosition] = useState<number>(70);
+	const [scrollPosition, setScrollPosition] = useState<number>(5);
 	const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 	const navigationRef: MutableRefObject<null | any> = useRef(null);
  
 	useEffect(() => {
 		// Set scroll position
-		if(scrollPositionProp)
-			setScrollPosition(scrollPositionProp);
+		if(!scrollPositionProp)
+			setScrollPosition(70);
+			
 
 		window.addEventListener("scroll", checkNavScrollPosition);
 
 		return () => {
-			setScrollPosition(70);
 			window.removeEventListener("scroll", checkNavScrollPosition); 
 		}
 	}, [scrollPositionProp]);
@@ -59,7 +59,7 @@ const Navigation = ({ showLinks=true, border=false, scrollPositionProp }: Props)
 	}
 
 	return (
-		<nav className={`navigation w-full flex justify-center z-50 fixed top-0 left-0 sm:px-2 sm:py-4 md:py-2.5 py-3.5 ${border ? "border-b border-tertiary-900" : ""} ${isActive ? "bg-clip-padding backdrop-filter border-tertiary-shade-900/40 backdrop-blur-xl bg-opacity-60 bg-[linear-gradient(180deg,_#114158 0%,_rgba(17,_65,_88,_0.8)_42.19%,_rgba(17,_65,_88,_0.3)_100%)] md:py-4 md:px-8" : ""}`}>
+		<nav className={`navigation w-full flex justify-center z-50 fixed top-0 left-0 sm:px-2 sm:py-4 md:py-2.5 py-3.5 ${border ? "border-b border-tertiary-700" : ""} ${isActive ? "bg-clip-padding backdrop-filter border-tertiary-shade-900/40 backdrop-blur-xl bg-opacity-60 bg-[linear-gradient(180deg,_#114158 0%,_rgba(17,_65,_88,_0.8)_42.19%,_rgba(17,_65,_88,_0.3)_100%)] md:py-4 md:px-8" : ""}`}>
 			<div className="wrapper flex justify-between items-center text-white rounded-lg transition-all duration-300 w-11/12 sm:w-[85%] md:w-10/12">			
 				<Link 
 					href="/" 
