@@ -39,22 +39,22 @@ export const featuresContent: FeatureProps[] = [
 	{
 		icon: RocketIcon,
 		title: "Nebula Launchpad",
-		content: "Access DAO Maker incubations and other top-tier tokens and NFT projects before they reach secondary markets."
+		content: "The Nebulapad is a permissionnless launchpad protocol that works in collaboration with the Nebula DAO, bridging the gap between the community and the projects. "
 	},
 	{
 		icon: CommunityIcon,
 		title: "Community Governance",
-		content: "DAO stakers and verified wallets can vote for startups to win token bribes."
+		content: "Through the Nebula DAO community members can vote on important proposal that shapes the direction and development of the protocol"
 	},
 	{
 		icon: NFTIcon,
 		title: "Nebula NFT",
-		content: "Join the DAO and participate in ecosystem governance."
+		content: "Holding the Nebula NFTs not only grants ownership of a rare and valuable item but also provides continuous rewards."
 	},
 	{
 		icon: MoneyIcon,
 		title: "Nebula Stake",
-		content: "Access yield, discounts, and exclusive private allocations."
+		content: "By staking, you can unlock a wide range of incredible benefits and maximize your participation in the Nebula ecosystem. "
 	}
 ];
 
@@ -182,12 +182,12 @@ export const dashboardLinks: Links[] = [
 		route: "/dashboard"
 	},
 	{
-		name: "proposal",
-		route: "/dashboard/proposal"
+		name: "proposals",
+		route: "/dashboard/proposals"
 	},
 	{
 		name: "new proposal",
-		route: "/dashboard/proposal/new"
+		route: "/dashboard/proposals/new"
 	},
 	{
 		name: "about",

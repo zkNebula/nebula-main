@@ -8,6 +8,7 @@ import { Links } from '@/typings';
 const DashboardSidebarLink = ({ name, route }: Links) => {
     const pathname = usePathname();
     const activeLink = pathname === route ? "text-tertiary-900 font-semibold" : "text-white hover:text-tertiary-900";
+    console.log(activeLink)
 
     return (
         <li key={name}>

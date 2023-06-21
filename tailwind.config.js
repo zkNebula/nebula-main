@@ -33,7 +33,7 @@ module.exports = {
       colors: {
         background: "#08161C",
         border: "#667085",
-        gray: "#AFB8C1",
+        grey: "#AFB8C1",
         primary: {
           900: "#2EC7E9",
           border: "#2B2D42",

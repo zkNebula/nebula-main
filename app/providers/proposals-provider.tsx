@@ -9,7 +9,7 @@ interface ProposalContextType {
   discussion: string
 }
 
-const ProposalContext = createContext<ProposalContextType | {}>({
+const ProposalContext = createContext<ProposalContextType | any>({
   title: "",
   description: "",
   image: {},
@@ -17,7 +17,7 @@ const ProposalContext = createContext<ProposalContextType | {}>({
 });
 
 export const ProposalProvider = ({ children } : { children: React.ReactNode }) => {
-    const [newProposal, setNewProposal] = useState<ProposalContextType | {}>({});
+    const [newProposal, setNewProposal] = useState<ProposalContextType | any>({});
 
     return (
       <ProposalContext.Provider value={{ newProposal, setNewProposal }}>

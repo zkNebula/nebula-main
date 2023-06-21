@@ -69,6 +69,7 @@ function NewProposal() {
                             label="title"
                             value={proposal.title}
                             onChange={handleChange}
+                            variant="form"
                             required
                         />
 
@@ -78,6 +79,7 @@ function NewProposal() {
                             label="description"
                             value={proposal.description}
                             onChange={handleChange}
+                            variant="form"
                             required
                         />
 
@@ -88,6 +90,7 @@ function NewProposal() {
                             placeholder="https://forum.balancer.fi/proposal"
                             value={proposal.discussion}
                             onChange={handleChange}
+                            variant="form"
                             required
                         />
                     </div>

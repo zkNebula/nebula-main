@@ -63,7 +63,7 @@ const Navigation = ({ showLinks=true, border=false, scrollPositionProp }: Props)
 			<div className="wrapper flex justify-between items-center text-white rounded-lg transition-all duration-300 w-11/12 sm:w-[85%] md:w-10/12">			
 				<Link 
 					href="/" 
-					className={`${isActive ? "h-10 xs:ml-0 xs:h-12 sm:h-9 md:h-10" : "h-9 xxs:h-10 md:h-12"} ml-4 xs:ml-0 font-extrabold uppercase`}
+					className={`${isActive ? "h-10 w-10 xs:ml-0 xs:w-[7.5rem] xs:h-[2.2rem] sm:h-9 sm:w-[6.6rem] md:w-32 md:h-10" : "h-9 w-[2.6rem] xxs:w-10 xxs:h-10 md:w-36 md:h-12"} ml-2 xs:ml-0 font-extrabold uppercase`}
 					onClick={() => window.scrollTo({
 						top: 0,
 						behavior: 'smooth',

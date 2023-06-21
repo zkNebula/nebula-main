@@ -6,7 +6,7 @@ import SocialLink from '../social-link/social-link';
 
 const DashboardSidebar = () => {  
   return (
-    <aside className='w-20vw h-fit border border-tertiary-900 rounded-xl p-4 space-y-6'>
+    <aside className='w-20vw sticky top-24 left-0 h-fit border border-tertiary-900 rounded-xl p-4 space-y-6'>
       <header className='content flex flex-col items-center gap-y-4'>
         <figure className='bg-gradient-to-b from-tertiary-shade-900 to-accent-shade-800 rounded-full w-14 h-14 shadow'></figure>
 
