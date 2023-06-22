@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useProposal } from '@/app/providers/proposals-provider';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
 import PreviousButton from '@/app/components/previous-button/previous-button';

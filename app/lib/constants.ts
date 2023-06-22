@@ -4,7 +4,8 @@ import {
 	FeatureProps, 
 	ListItemProps, 
 	Socials, 
-	Votes
+	Votes,
+	Members
 } from '@/typings';
 import HeroImage from '@/public/images/hero-image.png';
 import RocketIcon from '@/public/svg/rocket.svg';
@@ -364,5 +365,22 @@ export const votes: Votes[] = [
 		},
 		coins: '1.3M Nebula',
 		option: "Option 3"
+	}
+];
+
+export const members: Members[] = [
+	{
+		user: {
+			image: ProfileImage,
+			address: "shomustgoon.eth"
+		},
+		role: 'admin'
+	},
+	{
+		user: {
+			image: ProfileImage,
+			address: "0xC10D...3362"
+		},
+		role: 'admin'
 	}
 ];

@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from "react";
+import { ReactNode, useState, useEffect } from "react";
 import {
     EthereumClient,
     w3mConnectors,
@@ -36,12 +36,22 @@ setTheme({
     },
   });
 
-const Web3Provider = ({ children }: { children: ReactNode }) => {
+export const Web3Provider = ({ children }: { children: ReactNode }) => {
+    const [ready, setReady] = useState(false);
+
+    useEffect(() => {
+        setReady(true);
+    }, []);
+
+
     return (
         <>
-            <WagmiConfig config={wagmiConfig}>
-                {children}
-            </WagmiConfig>
+            {ready ? (
+                <WagmiConfig config={wagmiConfig}>
+                    {children}
+                </WagmiConfig>
+            ) : null}
+
             <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
         </>
     )

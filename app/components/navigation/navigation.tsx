@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef, MutableRefObject } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-// import { Web3Button } from "@web3modal/react";
 import NavigationLink from './navigation-link';
 import { AiOutlineBars } from 'react-icons/ai'; 
 import { navigationLinks } from '@/app/lib/constants';
@@ -83,7 +82,7 @@ const Navigation = ({ showLinks=true, border=false, scrollPositionProp }: Props)
 				</Link>
 
 				{/* Navigation Actions */}
-				<div className='nav-r flex items-center gap-x-3 sm:gap-x-5 md:gap-x-6'>
+				<div className='nav-r flex items-center gap-x-4 sm:gap-x-5 md:gap-x-6'>
 					{showLinks ? (
 						<>
 							{/* Hamburger */}
@@ -107,12 +106,7 @@ const Navigation = ({ showLinks=true, border=false, scrollPositionProp }: Props)
 					) : null}
 
 					{/* Wallet button */}
-					<Button
-						role="connect-wallet"
-						variant='primary'
-					>
-						Connect	
-					</Button> 
+					<Button role="connect wallet" variant='primary'>Connect wallet</Button>
 				</div>
 			</div>
 		</nav>

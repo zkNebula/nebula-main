@@ -62,3 +62,8 @@ export type Votes = {
     coins: string,
     option: string
 }
+
+export type Members = {
+    user: User,
+    role: string
+}

@@ -23,7 +23,7 @@ const FormSearch = () => {
 
     return (
         <form 
-            className='search-box h-11 flex bg-white relative rounded-full pr-2'
+            className='search-box h-11 flex bg-white relative rounded-full'
             onSubmit={searchProposal}
             noValidate    
         >
@@ -38,13 +38,14 @@ const FormSearch = () => {
             />
             <IoSearchOutline className='absolute top-[30%] left-4 text-gray-800 text-[1.2rem] rotate-90' />
             <select 
-                className='form-select text-gray-800 h-full px-1 font-inherit bg-transparent outline-none border-none bg-accent-shade-800 rounded-tr-full rounded-br-full cursor-pointer'
+                className='form-select text-gray-800 w-1/4 h-full px-2 font-inherit bg-transparent outline-none border-none bg-accent-shade-800 rounded-tr-full rounded-br-full cursor-pointer text-sm ring-0 shadow-none focus:border-none focus:outline-none focus:ring-0'
                 value={queryCategory}
                 onChange={({ target }) => setQueryCategory(target.value)}
             >
                 <option value="all">All</option>
-                <option value="dao">DAO</option>
-                <option value="git">GIT</option>
+                <option value="active">Active</option>
+                <option value="pending">Pending</option>
+                <option value="closed">Closed</option>
             </select>
         </form>
     );
