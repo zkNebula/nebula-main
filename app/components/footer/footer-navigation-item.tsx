@@ -11,7 +11,7 @@ const FooterNavigationItem = ({ heading, links }: FooterLinks) => {
             {links.map(({ name, route }) => (
                 <li key={name}>
                     <Link 
-                        href={route}
+                        href={name === "support" ? `mailto:${route}` : route}
                         className='capitalize text-[.92rem] sm:text-[.97rem] lg:text-base'
                     >{name}</Link>
                 </li>

@@ -23,7 +23,7 @@ const Footer = () => {
           </div>
 
           {/* Links */}
-          <div className='links grid-cols-2 gap-y-6 phone-sm:gap-y-0 phone-sm:grid-cols-3 phone-sm:gap-x-8 phone-sm:justify-items-center sm:gap-x-16  sm:justify-items-start sm-lg:grid-cols-[repeat(3,max-content)] sm-lg:gap-x-12 md-lg:gap-x-16 lg:gap-x-20'>
+          <div className='links grid grid-cols-2 gap-y-6 phone-sm:gap-y-0 phone-sm:grid-cols-3 phone-sm:gap-x-8 phone-sm:justify-items-center sm:gap-x-16  sm:justify-items-start sm-lg:grid-cols-[repeat(3,max-content)] sm-lg:gap-x-12 md-lg:gap-x-16 lg:gap-x-20'>
             {footerNavigationLinks.map(linkItem => (
               <FooterNavigationItem 
                 key={linkItem.heading}

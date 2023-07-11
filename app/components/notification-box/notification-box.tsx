@@ -15,17 +15,17 @@ const NotificationBox = ({ type="warning" }: Props) => {
   
   if(type === "info") {
     content = "zkNebula is revolutionizing the decentralized fund-raising space with a community governed permissionless launchpad ensuring network of successful projects launched.";
-    notificationStyles = "text-[.98rem] text-white/80"
+    notificationStyles = "text-[.92rem] sm:text-[.95rem] md:text-[.98rem] text-white/80"
   } else if(type === "about") {
     content = (
       <>
-        <p>
+        <p className='text-[.93rem] sm:text-[.96rem] md:text-base'>
           <span className='text-white font-semibold'>zkNebula</span>{" "} 
           is an extraordinary decentralized autonomous organization (DAO) project that has been developed to be entirely community-driven, providing the blockchain community with complete control over all decisions, contributions, and participation within the protocol. With its core components, namely the Nebula DAO, the NebulaPad, and Nebula NFTs, zkNebula revolutionizes the concept of decentralization in the blockchain space.</p>
 
-        <footer className='space-y-1'>
-          <h5 className='text-white text-[1.04rem] font-semibold'>Read Document</h5>
-          <Link href="#about" className='flex items-center gap-x-2 text-tertiary-700 text-[.92rem]'>
+        <footer className='space-y-0.5 md:space-y-1'>
+          <h5 className='text-white text-[.93rem] xs:text-[.95rem] sm:text-[.97rem] md:text-[1.04rem] font-semibold'>Read Document</h5>
+          <Link href="#about" className='flex items-center gap-x-2 text-tertiary-700 text-sm sm:text-[.89rem] md:text-[.92rem]'>
             https://docs.zkNebula.com/…
             <Image
               src={RedirectIcon}
@@ -37,24 +37,24 @@ const NotificationBox = ({ type="warning" }: Props) => {
       </>
     )
 
-    notificationStyles = "text-[.98rem] text-white/80 space-y-6"
+    notificationStyles = "text-[.98rem] text-white/80 space-y-4 md:space-y-6"
   } else if(type === "warning") {
     content = (
       <>
         <Image 
           src={InfoOutlineIcon}
           alt="info-outline"
-          className='w-5'
+          className='w-5 xxs:w-4 xs:w-5'
         />
-        <p className='text-[.97rem] col-start-2 col-end-3'>You need to connect your wallet in order to submit a proposal.</p>
-        <Link href="#learn-more" className='text-accent-shade-800 underline decoration-dotted text-[.92rem] col-start-2 col-end-3'>Learn more</Link>
+        <p className='text-sm xs:text-[.88rem] sm:text-[.95rem] md:text-[.97rem] col-start-2 col-end-3'>You need to connect your wallet in order to submit a proposal.</p>
+        <Link href="#learn-more" className='text-accent-shade-800 underline decoration-dotted text-[.83rem] xs:text-[.84rem] col-start-2 col-end-3'>Learn more</Link>
       </>
     );
     notificationStyles = "grid grid-cols-[max-content,1fr] items-center gap-x-2";
   }
   
   return (
-    <blockquote className={`p-[22px] w-full rounded-[12px] border border-tertiary-700 ${notificationStyles}`}>
+    <blockquote className={`p-[10px] xs:p-[14px] sm:p-[18px] md:p-[22px] w-full rounded-[12px] border border-tertiary-700/40 ${notificationStyles}`}>
       {content}
     </blockquote>
   )

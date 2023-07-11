@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const FeatureItem = ({ icon, title, content }: FeatureProps) => {
   return (
-    <div className='bg-feature border border-[#0480C3] rounded-[24px] py-5 px-5 xs:py-8 xs:px-8 phone-sm:px-16 sm:py-5 sm:px-3 md:py-7 md:px-2 lg:py-10 lg:px-4 flex flex-col items-center gap-y-3 md:gap-y-2 lg:gap-y-3 text-center'>
+    <div className='bg-feature border border-[#0480C3] rounded-[24px] py-5 px-5 xs:py-8 xs:px-8 phone-sm:px-16 sm:py-5 sm:px-3 md:py-7 md:px-2 lg:py-10 lg:px-1 flex flex-col items-center gap-y-3 md:gap-y-2 lg:gap-y-3 text-center'>
         <Image 
           src={icon} 
           alt="image" 

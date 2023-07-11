@@ -13,13 +13,12 @@ import ListItem from '../components/list-item/list-item';
 import { communityGovernanceContent, featuresContent, nebulaLaunchpadContent, nebulaNFTContent, nebulaStakeContent } from '../lib/constants';
 import FeatureItem from '../components/feature-item/feature-item';
 import InfoIcon from '@/public/svg/info.svg';
+import TokenomicsChart from '../components/tokenomics-chart/tokenomics-chart';
 
 export default function Home() {
   return (
     <>
       <Hero />
-
-      {/* <p>For production Image Optimization with Next.js, the optional 'sharp' package is strongly recommended. Run 'yarn add sharp', and Next.js will use it automatically for Image Optimization</p> */}
 
       {/* Claims */}
       <section className="claims bg-white py-4 px-3 xs:py-5 xs:px-7 phone-sm:px-5 md:py-6 lg:py-8 flex justify-center items-center relative overflow-hidden">
@@ -229,6 +228,11 @@ export default function Home() {
           x="right-[6%]"
           width="8%"
         />
+      </section>
+
+      {/* Tokenomics */}
+      <section>
+        <TokenomicsChart />
       </section>
 
       {/* Company Feature */}

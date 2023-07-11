@@ -1,4 +1,5 @@
 import '@/styles/globals.css';
+import '@/styles/RichEditor.css';
 import { Syne, Roboto } from 'next/font/google';
 import localFont from 'next/font/local';
 import Providers from './providers';
@@ -65,10 +66,12 @@ export default function RootLayout({
       <head>
         <link rel="icon" href='../../_next/static/media/favicon-large.3b6a782a.png' />
       </head>
-      <body className={`${inter.className} ${syne.className} selection:bg-accent-shade-800 selection:text-black ${roboto.className} font-sans bg-background text-white`}>          
+      <body className={`${inter.className} ${syne.className} selection:bg-accent-shade-800 selection:text-black ${roboto.className} font-sans bg-app-background text-white`}>          
         <Providers>
           {children}
         </Providers>
+        <div id="modal-root"></div>
+        <div id="offset-root"></div>
       </body>
     </html>
   )

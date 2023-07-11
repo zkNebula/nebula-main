@@ -14,11 +14,11 @@ export default function RootLayout({
     <>
       <Navigation 
         scrollPositionProp
-        showLinks={false} 
-        border 
+        showLinks={false}
+        showHamburger  
       />
 
-      <main className='mt-36 mb-6 xs:mt-28 md:mt-20 py-4 w-[85%] mx-auto'>
+      <main className='mt-16 xxs:mt-20 mb-6 xs:mt-20 sm:mt-20 py-4 w-[94%] sm:w-[96%] md-md:w-[94%] lg:w-[85%] mx-auto'>
         {children}
       </main>
     </>  

@@ -5,7 +5,7 @@ import { useState, createContext, useContext } from "react";
 interface ProposalContextType {
   title: string,
   description: string,
-  image: File | object,
+  image?: File | object,
   discussion: string
 }
 

@@ -1,9 +1,15 @@
 'use client';
 
+import { ReactNode } from 'react';
 import { ProposalProvider } from './proposals-provider';
-// import { Web3Provider } from './web3-providers';
+// import { ModalProvider } from './modal-provider';
+// import WagmiProvider from './wagmi-providers';
 
-function Providers({ children }: { children: React.ReactNode }) {
+type ProviderType = {
+    children: ReactNode
+}
+
+function Providers({ children }: ProviderType) {
     return (
         <ProposalProvider>
             {children}

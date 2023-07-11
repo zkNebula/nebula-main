@@ -48,13 +48,15 @@ export type ProposalOption = {
 }
 
 export type Proposals = {
-    user: User,
-    title: string,
-    content: string,
-    options: ProposalOption[],
-    endDate: string,
-    quorum: string,
-    status: string
+    user: User;
+    title: string;
+    slug: string;
+    discussion: string;
+    description: string;
+    options: ProposalOption[];
+    endDate: string;
+    quorum: string;
+    status: string;
 }
 
 export type Votes = {
