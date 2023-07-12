@@ -115,7 +115,7 @@ const TokenomicsChart = () => {
     document.querySelector(".apexcharts-legend")?.setAttribute("id", "apexcharts-legend");
 
     return (
-        <div className="chart flex flex-col items-center pt-8 relative">
+        <div className="chart flex flex-col items-center pt-8 relative overflow-x-scroll">
             <Heading 
               heading="Project Addresses"
               subHeading="Total supply: 100 Trillion"
