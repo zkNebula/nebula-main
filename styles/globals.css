@@ -71,4 +71,16 @@
   .profile-container > .profile > p {
     font-weight: 700;
   }
+
+  @media only screen and (max-width: 620px) {
+    .apexcharts-legend {
+      inset: 432px 0 0 !important;
+      gap: .6rem !important;
+      overflow-x: scroll !important;
+    }
+
+    .apexcharts-legend-text {
+      font-size: 13px !important;
+    }
+  }
 }

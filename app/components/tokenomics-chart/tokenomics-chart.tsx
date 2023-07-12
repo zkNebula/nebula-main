@@ -65,14 +65,13 @@ const TokenomicsChart = () => {
                         width: 620,
                         type: 'polarArea'
                     },
+                    legend: {
+                        position: 'bottom'
+                    },
                     plotOptions: {
                         bar: {
-                        horizontal: false
+                            horizontal: false
                         }
-                    },
-                    legend: {
-                        fontSize: '16px',
-                        offsetY: 80
                     }
                 }
             },
@@ -85,16 +84,7 @@ const TokenomicsChart = () => {
                     },
                     plotOptions: {
                         bar: {
-                        horizontal: false
-                        }
-                    },
-                    legend: {
-                        fontSize: '10px',
-                        offsetX: 5,
-                        position: 'bottom',
-                        labels: {
-                            colors: "#ggg",
-                            useSeriesColors: true
+                            horizontal: false
                         }
                     }
                 }
@@ -122,8 +112,10 @@ const TokenomicsChart = () => {
         setIsLoading(false);
     }, [balances, isLoading]);
 
+    document.querySelector(".apexcharts-legend")?.setAttribute("id", "apexcharts-legend");
+
     return (
-        <div className="chart flex flex-col items-center pt-8">
+        <div className="chart flex flex-col items-center pt-8 relative">
             <Heading 
               heading="Project Addresses"
               subHeading="Total supply: 100 Trillion"
