@@ -35,14 +35,14 @@ const ListItem = ({ list: { title, content, readMoreRoute, button, isLinkActive 
                         <Button
                             role="info"
                             variant='text-primary'
-                            styles='mt-2'
+                            className='mt-2 ss:px-0 lg:px-0'
                             onClick={() => router.push(readMoreRoute ?? "")}
                         >Learn more...</Button>
 
                         <Button
                             role="button"
                             variant='primary'
-                            styles="mt-4 sm:mt-6 md:mt-8"
+                            className="mt-4 sm:mt-6 md:mt-8"
                             onClick={() => router.push(button?.route ?? "")}
                         >{button?.title ?? ""}</Button>
                     </>

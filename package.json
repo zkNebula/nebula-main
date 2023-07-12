@@ -48,7 +48,6 @@
     "viem": "^1.1.3",
     "wagmi": "^1.2.1",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz",
-    "xml-js": "^1.6.11",
     "zksync-web3": "^0.14.3"
   },
   "devDependencies": {

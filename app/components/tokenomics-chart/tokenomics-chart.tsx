@@ -59,7 +59,7 @@ const TokenomicsChart = () => {
         },
         responsive: [
             {
-                breakpoint: 780,
+                breakpoint: 650,
                 options: {
                     chart: {
                         width: 620,
@@ -80,7 +80,7 @@ const TokenomicsChart = () => {
                 breakpoint: 480,
                 options: {
                     chart: {
-                        width: 420,
+                        width: 580,
                         type: 'polarArea'
                     },
                     plotOptions: {
@@ -89,8 +89,13 @@ const TokenomicsChart = () => {
                         }
                     },
                     legend: {
-                        fontSize: '14px',
-                        offsetY: 60
+                        fontSize: '10px',
+                        offsetX: 5,
+                        position: 'bottom',
+                        labels: {
+                            colors: "#ggg",
+                            useSeriesColors: true
+                        }
                     }
                 }
             }
@@ -123,7 +128,7 @@ const TokenomicsChart = () => {
               heading="Project Addresses"
               subHeading="Total supply: 100 Trillion"
               variant="light"
-              styles={`text-center md:text-center ${isLoading ? "" : "-mb-12"}`}
+              styles={`text-center md:text-center ${isLoading ? "" : "xs:-mb-12"}`}
               removeContentPadding
             />
             {!isLoading ? (

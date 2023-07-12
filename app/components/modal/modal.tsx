@@ -8,7 +8,6 @@ import { validateForm } from "@/app/lib/validation";
 import FormInput from "../form-input/form-input";
 import { fetchAllCountries } from "@/app/lib/server";
 
-
 interface ModalProps {
     closeModal: () => void,
     className?: string

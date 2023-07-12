@@ -89,14 +89,14 @@ export default function Home() {
               src={RectangleImage}
               alt="my-project"
               height={331}
-              className='w-2/4 xs:w-[45%] phone-sm:w-[47%] sm:w-1/3 md:w-5/6 lg:w-max object-fit rotate-6'
+              className='w-[45%] xxs:w-2/4 xs:w-[45%] phone-sm:w-[47%] sm:w-1/3 md:w-5/6 lg:w-max object-fit rotate-6'
             />
 
             <Image 
               src={RocketImage}
               alt="my-project"
               height={331}
-              className='w-2/4 xs:w-[45%] phone-sm:w-[47%] sm:w-1/3 md:w-5/6 lg:w-max object-fit absolute -top-[15%] left-[30%] phone-sm:left-[30%] sm:left-4 -rotate-4'
+              className='w-[45%] xxs:w-2/4 xs:w-[45%] phone-sm:w-[47%] sm:w-1/3 md:w-5/6 lg:w-max object-fit absolute -top-[15%] left-[30%] phone-sm:left-[30%] sm:left-4 -rotate-4'
             />
           </figure>
         </div>
@@ -126,7 +126,7 @@ export default function Home() {
           />
 
           {/* Content */}
-          <div className="content space-y-9">
+          <div className="content space-y-6 xs:space-y-9">
             <Heading 
               heading="Community Governance"
               variant="light"
