@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, MutableRefObject } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import NavigationLink from './navigation-link';
 import { navigationLinks } from '@/app/lib/constants';
 import Favicon from '@/public/images/favicon.png';
@@ -10,7 +11,6 @@ import FaviconPhone from "@/public/images/favicon-large.png";
 import Button from '../button/button';
 import { MenuIcon } from 'lucide-react';
 import Offset from '../offset/offset';
-import setSeconds from 'date-fns/fp/setSeconds/index.js';
 
 
 type Props = {
@@ -21,6 +21,7 @@ type Props = {
 }
 
 const Navigation = ({ showLinks=true, border=false, scrollPositionProp, showHamburger }: Props) => {
+	const pathname = usePathname();
 	const [isActive, setIsActive] = useState<boolean>(false);
 	const [isOffsetOpen, setIsOffsetOpen] = useState<boolean>(false);
 	const [scrollPosition, setScrollPosition] = useState<number>(5);
@@ -90,10 +91,7 @@ const Navigation = ({ showLinks=true, border=false, scrollPositionProp, showHamb
 						{showLinks ? (
 							<>
 								{/* Hamburger */}
-								<span 
-									className="phone:hidden cursor-pointer order-2 xs:order-1"
-									onClick={() => setIsOffsetOpen(props => !props)}
-								>
+								<span className="phone:hidden cursor-pointer order-2 xs:order-1">
 									<MenuIcon className="text-3xl" />
 								</span>
 
