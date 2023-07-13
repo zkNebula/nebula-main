@@ -7,6 +7,8 @@ import { dashboardLinks, companySocials } from '@/app/lib/constants';
 import SocialLink from '../social-link/social-link';
 import UserProfile from '../user-profile/user-profile';
 import Modal from '../modal/modal';
+import DashboardModal from '../dashboard-modal/dashboard-modal';
+import ClientOnly from '../clientOnly/clientOnly';
 
 
 const DashboardSidebar = () => {  
@@ -16,7 +18,7 @@ const DashboardSidebar = () => {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <>
+    <ClientOnly>
       <aside className='hidden md-md:inline-block w-[24vw] lg:w-22vw sticky top-16 lg:top-24 left-0 h-fit border border-tertiary-900/40 rounded-xl p-4 space-y-6 lg:space-y-8'>
         <header className='content flex flex-col items-center gap-y-3'>
           <UserProfile />
@@ -53,9 +55,9 @@ const DashboardSidebar = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <Modal closeModal={closeModal} />
+        <DashboardModal closeModal={closeModal} />
       )}
-    </>
+    </ClientOnly>
   )
 }
 

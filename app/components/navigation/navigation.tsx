@@ -3,14 +3,16 @@
 import React, { useState, useEffect, useRef, MutableRefObject } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 import NavigationLink from './navigation-link';
-import { navigationLinks } from '@/app/lib/constants';
+import { menuLinks, navigationLinks } from '@/app/lib/constants';
 import Favicon from '@/public/images/favicon.png';
 import FaviconPhone from "@/public/images/favicon-large.png";
-import Button from '../button/button';
 import { MenuIcon } from 'lucide-react';
+import Button from '../button/button';
 import Offset from '../offset/offset';
+import Dropdown from '../dropdown/dropdown';
+import CustomConnectKit from '../connectkit-custom-button/connectkit-custom-button';
+import { ConnectKitButton } from 'connectkit';
 
 
 type Props = {
@@ -21,12 +23,11 @@ type Props = {
 }
 
 const Navigation = ({ showLinks=true, border=false, scrollPositionProp, showHamburger }: Props) => {
-	const pathname = usePathname();
 	const [isActive, setIsActive] = useState<boolean>(false);
 	const [isOffsetOpen, setIsOffsetOpen] = useState<boolean>(false);
+	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 	const [scrollPosition, setScrollPosition] = useState<number>(5);
-	const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-	const navigationRef: MutableRefObject<null | any> = useRef(null);
+	const menuRef: MutableRefObject<null | any> = useRef(null);
  
 	useEffect(() => {
 		// Set scroll position
@@ -51,14 +52,14 @@ const Navigation = ({ showLinks=true, border=false, scrollPositionProp, showHamb
 	}
 
 	useEffect(() => {
-		window.addEventListener("mouseover", onHoverHandler)
+		window.addEventListener("click", onHoverHandler)
 
-		return () => window.removeEventListener("mouseover", onHoverHandler);
+		return () => window.removeEventListener("click", onHoverHandler);
 	});
 
 	function onHoverHandler(e: Event) {			
-		if(isDropdownOpen && !navigationRef?.current.contains(e.target))
-			setIsDropdownOpen(false);
+		if(isMenuOpen && !menuRef.current.contains(e.target))
+			setIsMenuOpen(false);
 	}
 
 	return (
@@ -90,13 +91,9 @@ const Navigation = ({ showLinks=true, border=false, scrollPositionProp, showHamb
 					<div className='nav-r flex items-center gap-x-4 sm:gap-x-5 md:gap-x-6'>
 						{showLinks ? (
 							<>
-								{/* Hamburger */}
-								<span className="phone:hidden cursor-pointer order-2 xs:order-1">
-									<MenuIcon className="text-3xl" />
-								</span>
 
 								{/* Navigation Link */}
-								<ul className="navigation-items hidden phone:flex items-center gap-x-5 md:gap-x-6" ref={navigationRef}>
+								<ul className="navigation-items hidden phone:flex items-center gap-x-5 md:gap-x-6">
 									{navigationLinks.map(link => (
 										<NavigationLink 
 											key={link.name}
@@ -108,8 +105,25 @@ const Navigation = ({ showLinks=true, border=false, scrollPositionProp, showHamb
 						) : null}
 
 						{/* Wallet button */}
-						<Button role="connect wallet" variant='primary'>Connect wallet</Button>
+						<CustomConnectKit variant="primary" />
+								
+						{/* Dropdown menu */}
+						{!showHamburger && (
+							<div className='relative' ref={menuRef}>
+								<span onClick={() => setIsMenuOpen(prop => !prop)} className='cursor-pointer'>
+									<MenuIcon className='w-8 h-8 xs:w-6 xs:h-6 object-cover' 
+									/>
+								</span>
 
+								{isMenuOpen ? (
+									<Dropdown 
+										subLinks={menuLinks}
+									/>
+								) : null}
+							</div>
+						)} 
+						
+						{/* Hamburger */}
 						{showHamburger && (
 							<>
 								{/* Hamburger */}

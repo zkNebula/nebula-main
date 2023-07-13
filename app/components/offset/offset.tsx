@@ -8,6 +8,7 @@ import DashboardSidebarLink from "../dashboard-sidebar/dashboard-sidebar-link";
 import SocialLink from "../social-link/social-link";
 import Modal from "../modal/modal";
 import { motion } from "framer-motion";
+import DashboardModal from "../dashboard-modal/dashboard-modal";
 
 interface OffsetProps {
     closeOffset: () => void
@@ -75,7 +76,10 @@ const Offset: FC<OffsetProps> = ({ closeOffset }) => {
 
             {/* Modal */}
             {isModalOpen && (
-                <Modal closeModal={closeModal} className="z-[1005]" />
+                <DashboardModal 
+                    closeModal={closeModal} 
+                    className="z-[1005]" 
+                />
             )}
         </>
     );

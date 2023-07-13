@@ -112,8 +112,6 @@ const TokenomicsChart = () => {
         setIsLoading(false);
     }, [balances, isLoading]);
 
-    document.querySelector(".apexcharts-legend")?.setAttribute("id", "apexcharts-legend");
-
     return (
         <div className="chart flex flex-col items-center pt-8 relative overflow-x-scroll">
             <Heading 
@@ -132,7 +130,7 @@ const TokenomicsChart = () => {
                 />
             ) : ( 
                 <div className="my-10">
-                    <Loader2 className="w-6 h-6 md:w-8 md:h-8 stroke-tertiary-700 animate-spin transition-transform duration-300" />
+                    <Loader2 className="w-5 h-5 md:w-7 md:h-7 stroke-tertiary-700 animate-spin transition-transform duration-500" />
                 </div>
             )}
         </div>

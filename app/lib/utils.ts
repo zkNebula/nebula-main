@@ -46,8 +46,8 @@ export const reverseSlug: (value: string) => string = (slug: string) => {
     return reverseSlugToInitialState;
 }
 
-export const truncateWalletAddress = (address: string) => {
-    return `${address.substring(0, 5)}.....${address.substring(address.length - 5, address.length)}`
+export const truncateWalletAddress = (address: any) => {
+    return `${address.substring(0, 5)}••••${address.substring(address.length - 4, address.length)}`
 }
 
 export const capitalizeFirstLetter = (text: string) => {
@@ -84,7 +84,7 @@ export function getRemainingTimeUntilTimeStamp(timeStamp: Date) {
     }
 }
 
-function getRemainingTimeStamp(nowDayjs: any, timeStampDayjs: any) {
+export function getRemainingTimeStamp(nowDayjs: any, timeStampDayjs: any) {
     return (type: string) => {
         const divider = type === "hours" ? 24 : type === "days" ? 1 : 60;
         const stamp = divider > 1 ? timeStampDayjs.diff(nowDayjs, type) % divider : timeStampDayjs.diff(nowDayjs, type);

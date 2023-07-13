@@ -11,6 +11,8 @@ import PreviousButton from '@/app/components/previous-button/previous-button'
 import Button from '@/app/components/button/button';
 import { useProposal } from '@/app/providers/proposals-provider';
 import Editor from '@/app/components/editor/editor';
+import { useAccount } from 'wagmi';
+import CustomConnectKit from '@/app/components/connectkit-custom-button/connectkit-custom-button';
 
 type ProposalInputProps = {
     title: string,
@@ -32,6 +34,7 @@ function EditProposal() {
     const [titleError, setTitleError] = useState<string>("");
     const [discussionError, setDiscussionError] = useState<string>("");
     const [descriptionError, setDescriptionError] = useState<string>("");
+    const { isConnected } = useAccount();
 
     // Set proposal
     useEffect(() => {
@@ -96,8 +99,38 @@ function EditProposal() {
             }
         }    
     }
+    
+    function submitProposal() {
+        const isValid: boolean = Object.values(proposal).every(value => Boolean(value));
 
-    console.log(proposal, proposalForm, "proposal to edit")
+        if(!isValid) {
+            if(!proposal.title) 
+                setTitleError("Title can't be empty");
+            else 
+                setTitleError("");
+
+            if(!isArticleUpdated) 
+                setDescriptionError("Description can't be empty");
+            else 
+                setDescriptionError("");
+
+            if(!proposal.discussion)
+                setDiscussionError("Discussion can't be empty");
+            else
+                setDiscussionError(""); 
+
+            setTimeout(() => toast.error("Add a proposal"), 500);
+        } else {
+            try {
+                // Set user proposal
+                setNewProposal(proposal);
+
+                router.push("/dashboard/proposals/preview");
+            } catch(error) {
+                console.log(error)
+            }
+        }  
+    } 
 
     return (
         <>
@@ -157,14 +190,22 @@ function EditProposal() {
                         Preview
                     </Button>
 
-                    <Button
-                        type="button"
-                        role="connect wallet button"
-                        variant="accent"
-                        className="w-full ss:py-3 rounded-full"
-                    >
-                        Connect wallet
-                    </Button>
+                    {!isConnected ? (
+                        <CustomConnectKit 
+                            variant="accent" 
+                            className="w-full ss:py-3 rounded-full" 
+                        />
+                    ) : (
+                        <Button
+                            type="submit"
+                            role="preview proposal button"
+                            variant="accent"
+                            className="w-full ss:py-3 rounded-full"
+                            onClick={submitProposal}
+                        >
+                            Submit proposal
+                        </Button>
+                    )}
                 </aside>
             </main>
         </>

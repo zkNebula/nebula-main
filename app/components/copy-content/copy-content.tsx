@@ -6,16 +6,17 @@ import { CopyIcon } from 'lucide-react';
 
 
 interface CopyContentProps {
-  copyText: string,
-  color?: string
+  text: string;
+  textToCopy: any;
+  color?: string;
 }
  
-const CopyContent: FC<CopyContentProps> = ({ copyText, color }) => {
+const CopyContent: FC<CopyContentProps> = ({ text, textToCopy, color }) => {
     const [showCopiedIndicator, setShowCopiedIndicator] = useState(false);
     
     const copy = () => {
         // Copy logic
-        navigator.clipboard.writeText(copyText)
+        navigator.clipboard.writeText(textToCopy)
 
         // Show indicator
         setShowCopiedIndicator(true);
@@ -25,7 +26,7 @@ const CopyContent: FC<CopyContentProps> = ({ copyText, color }) => {
     }
     return (
         <div className='flex items-center justify-center gap-x-2 relative'>
-            <span className={`text-sm md:text-[.83rem] ${color ?? "text-gray-100"}`}>{copyText}</span>
+            <span className={`text-sm md:text-[.83rem] ${color ?? "text-gray-100"}`}>{text}</span>
             <span 
               className='cursor-pointer transition-transform duration-300 hover:scale-105'
               onClick={copy}

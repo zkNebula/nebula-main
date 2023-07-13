@@ -4,26 +4,27 @@ import FaviconBordered from '@/public/images/favicon-bordered.png';
 import Avatar from "@/public/images/avatar.png";
 import { truncateWalletAddress } from '@/app/lib/utils';
 import { FC } from 'react';
+import { useAccount } from 'wagmi';
+import ClientOnly from '../clientOnly/clientOnly';
 
 interface UserProfileProps {
     size?: "sm" | "md" | "lg"
 }
  
 const UserProfile: FC<UserProfileProps> = ({ size="sm" }) => {
-    const address = "0x5E93Dc46cb41D9ACbEc0da2b5F33de7a4a8Cf7a9";
-    const isUserAuthenticated = true;
-    let profile = null;
-    let profileImageSize;
+  const { address, isConnected } = useAccount();
+  let profile = null;
+  let profileImageSize;
 
-    if(size === "lg")
-        profileImageSize = "w-24 h-24";
-    else if(size === "md")
-        profileImageSize = "w-[4.5rem] h-[4.5rem] sm:w-20 sm:h-20"
-    else
-        profileImageSize = "w-16 h-16";
+  if(size === "lg")
+      profileImageSize = "w-24 h-24";
+  else if(size === "md")
+      profileImageSize = "w-[4.5rem] h-[4.5rem] sm:w-20 sm:h-20"
+  else
+      profileImageSize = "w-16 h-16";
 
 
-    if(isUserAuthenticated)
+  if(isConnected)
     profile = (
       <>
         <figure className={`rounded-full ${profileImageSize} shadow`}>
@@ -38,7 +39,7 @@ const UserProfile: FC<UserProfileProps> = ({ size="sm" }) => {
         {/* Header info */}
         <div className='text-center w-full grid gap-y-1'>
           <h6 className='text-white leading-5 text-base sm:text-lg font-medium mb-1'>Cypherslopps</h6>
-          <CopyContent copyText={truncateWalletAddress(address)} />
+          <CopyContent textToCopy={address} text={truncateWalletAddress(address)} />
         </div>
       </>
     );
@@ -60,11 +61,12 @@ const UserProfile: FC<UserProfileProps> = ({ size="sm" }) => {
         </div>
       </>
     )
-    return (
-        <>
-          {profile}
-        </>
-    );
+    
+  return (
+      <ClientOnly>
+        {profile}
+      </ClientOnly>
+  );
 }
  
 export default UserProfile;

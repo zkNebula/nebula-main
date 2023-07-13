@@ -1,70 +1,97 @@
-"use client";
-
-import { FC, FormEvent, useState } from "react";
-import { X } from "lucide-react";
+import { FormEvent, useEffect, useState, FC } from "react";
 import Image from "next/image";
-import Portal from "../portals/portals";
 import Avatar from '@/public/images/avatar.png';
-import FormInput from "../form-input/form-input";
 import Button from "../button/button";
 import { validateForm } from "@/app/lib/validation";
+import FormInput from "../form-input/form-input";
+import { fetchAllCountries } from "@/app/lib/server";
+import { X } from "lucide-react";
+import Modal from "../modal/modal";
 
-interface ModalProps {
-    closeModal?: () => any;
+interface DashboardModalProps {
+    closeModal: () => void;
+    className?: string
 }
 
-const Modal: FC<ModalProps> = async ({ closeModal }) => {
-    // const [form, setForm] = useState({
-    //     username: "",
-    //     email: "",
-    //     location: ""
-    // });
-    // const [isLoading, setIsLoading] = useState<boolean>(false);
-    // const [emailError, setEmailError] = useState("");
-    // const [usernameError, setUsernameError] = useState("");
-    // const [locationError, setLocationError] = useState("");
-    // const isValid = Object.values(form).every(val => Boolean(val));
+const DashboardModal: FC<DashboardModalProps> = ({ closeModal, className }) => {   
+    const [form, setForm] = useState({
+        username: "",
+        email: "",
+        location: ""
+    });
+    const [countries, setCountries] = useState([
+        "Afghanistan",
+        "Albania",
+        "Algeria",
+        "Andorra",
+        "Angola",
+        "Antigua and Barbuda",
+        "Argentina",
+        "Armenia",
+        "Australia",
+        "Austria",
+        "Azerbaijan",
+        "The Bahamas",
+        "Bahrain",
+        "Bangladesh",
+        "Barbados",
+        "India",
+    ]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [emailError, setEmailError] = useState("");
+    const [usernameError, setUsernameError] = useState("");
+    const [locationError, setLocationError] = useState("");
+    const isValid = Object.values(form).every(val => Boolean(val));
 
-    // function handleChange({ target }: any) {
-    //     const { name, value } = target;
+    function handleChange({ target }: any) {
+        const { name, value } = target;
 
-    //     setForm({
-    //         ...form, 
-    //         [name]: value
-    //     });
-    // }
+        setForm({
+            ...form, 
+            [name]: value
+        });
+    }
 
-    // function submitJoinedUser(e: FormEvent) {
-    //     e.preventDefault();
+    function submitJoinedUser(e: FormEvent) {
+        e.preventDefault();
 
-    //     setIsLoading(true);
+        setIsLoading(true);
 
-    //     if(isValid) {
-    //         try {
-    //             console.log("submit form")
-    //         } catch(e) {
-    //             console.log("there was an error posting form")
-    //         } finally {
-    //             setIsLoading(false);
+        if(isValid) {
+            try {
+                console.log("submit form")
+            } catch(e) {
+                console.log("there was an error posting form")
+            } finally {
+                setIsLoading(false);
 
-    //             // Close modal
-    //             // setTimeout(() => {
-    //             //     closeModal();
-    //             // }, 100);
-    //         }
-    //     }        
-    // }
-    console.log("modal instantiated")
+                // Close modal
+                setTimeout(() => {
+                    closeModal();
+                }, 100);
+            }
+        }        
+    } 
+
+    useEffect(() => {
+        async function fetchData() {
+          const countriesData = await fetchAllCountries();
+          console.log(countriesData)
+            //setCountries(countriesData);
+        }
+    
+        fetchData();
+      }, []);
 
     return (
-        <Portal elementId='modal-root'>
-            {/* <div className="modal w-[90%] left-[5%] sm:w-[75%] sm:left-[13%] md:w-[70%] md:left-[15%] lg:w-[50%] absolute top-24 lg:left-[27%] rounded-lg shadow bg-gradient-to-tl from-accent-shade-800/5 to-tertiary-900/60 p-[0.03rem]">
+        <Modal className={className}>
+            <div className="modal w-[90%] left-[5%] sm:w-[75%] sm:left-[13%] md:w-[70%] md:left-[15%] lg:w-[50%] absolute top-24 lg:left-[27%] rounded-lg shadow bg-gradient-to-tl from-accent-shade-800/5 to-tertiary-900/60 p-[0.03rem]">
                 <div className="bg-[#08161c] rounded-lg">
                     <span className="close absolute top-5 right-5 cursor-pointer transition-transform duration-300 hover:rotate-180" onClick={closeModal}>
                         <X className="w-5 h-5 md:w-6 md:h-6 stroke-tertiary-700" />
                     </span>
-                    
-                    {/* Modal Content 
+
+                    {/* Modal Content */}
                     <div className="modal py-6 px-7 space-y-5">
                         <Image 
                             src={Avatar}
@@ -72,7 +99,7 @@ const Modal: FC<ModalProps> = async ({ closeModal }) => {
                             className="sm:w-[4rem] sm: md:w-[4.5rem] md:h-[4.5rem] rounded-full mx-auto"
                         />
 
-                        {/* Form 
+                        {/* Form */}
                         <form 
                             className="flex flex-col gap-y-3"
                             onSubmit={submitJoinedUser}
@@ -126,6 +153,9 @@ const Modal: FC<ModalProps> = async ({ closeModal }) => {
                                     })}
                                 >
                                     <option value="all">All</option>
+                                    {countries.map(country=> (
+                                        <option key={country} value={country}>{country}</option>
+                                    ))}
                                 </select>
 
 
@@ -134,14 +164,14 @@ const Modal: FC<ModalProps> = async ({ closeModal }) => {
                                 ) : null}
                             </div>
 
-                            {/* Form actions 
+                            {/* Form actions */}
                             <div className="grid grid-cols-2 md:flex md:justify-end gap-x-2 mt-4">
                                 <Button
                                     role="cancel modal button"
                                     type="button"
                                     onClick={closeModal}
                                     variant="red-border"
-                                    className="rounded-full md:w-28 lg:w-32"
+                                    className="rounded-full w-full md:w-28 lg:w-32"
                                 >
                                     Cancel
                                 </Button>
@@ -150,7 +180,7 @@ const Modal: FC<ModalProps> = async ({ closeModal }) => {
                                     role="submit join form button"
                                     type="submit"
                                     variant="primary"
-                                    className="rounded-full md:w-28 lg:w-32"
+                                    className="rounded-full w-full md:w-28 lg:w-32"
                                     isLoading={isLoading}
                                     disabled={!isValid}
                                 >
@@ -160,10 +190,9 @@ const Modal: FC<ModalProps> = async ({ closeModal }) => {
                         </form>
                     </div>
                 </div>
-            </div> */}
-            <h1>Modal</h1>
-        </Portal>
+            </div>
+        </Modal>
     );
 }
  
-export default Modal;
+export default DashboardModal;

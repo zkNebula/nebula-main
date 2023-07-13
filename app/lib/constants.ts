@@ -20,6 +20,11 @@ import TwitterIcon from '@/public/svg/socials/twitter.svg';
 import DiscordIcon from '@/public/svg/socials/discord.svg';
 import WebIcon from '@/public/svg/socials/web.svg';
 
+import RocketThickIcon from '@/public/svg/rocket-thick.svg';
+import NFTThickIcon from '@/public/svg/nft-thick.svg'
+import PersonIcon from '@/public/svg/person.svg'
+import DashboardIcon from '@/public/svg/dashboard.svg';
+
 export const navigationLinks = [
 	{
 		name: "Home",
@@ -36,6 +41,29 @@ export const heroContent = {
 	content: "Build your DAO, explore communities, and find inspiration for your project all in one place.",
 	image: HeroImage
 };
+
+export const menuLinks = [
+	{
+		name: "Launch pad",
+		route: '',
+		icon: RocketThickIcon
+	},
+	{
+		name: "Dashboard",
+		route: '/dashboard',
+		icon: DashboardIcon
+	},
+	{
+		name: "zkNebula NFT",
+		route: '',
+		icon: NFTThickIcon
+	},
+	{
+		name: "Profile",
+		route: '/dashboard/profile',
+		icon: PersonIcon
+	}
+]
 
 export const featuresContent: FeatureProps[] = [
 	{
@@ -469,3 +497,8 @@ export const zkSyncAddresses = [
 	"0x66fDFa5c8E7451F1f3F02E8EC5002F17F776B98f",
 	"0x38e64A4A0aad1dcD37f4D8A2Df9D5Af5b8cB4855"
 ];
+
+export const claimNowDate = new Date("Jun 28, 2023");
+export const claimNowPageDate = new Date("Jul 23, 2023");
+
+export const tokenInfo = ["No Presale", "Even Distribution", "No Airdrops", "100% Community-driven", "Most Transparent", "No Tax"];

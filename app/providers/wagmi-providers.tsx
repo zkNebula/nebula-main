@@ -1,35 +1,58 @@
-import {
-    EthereumClient,
-    w3mConnectors,
-    w3mProvider,
-} from "@web3modal/ethereum";
-import { Web3Modal } from "@web3modal/react";
-import { configureChains, createConfig, WagmiConfig } from "wagmi";
+import { WagmiConfig, configureChains, createConfig } from "wagmi"
+import { publicProvider } from "wagmi/providers/public";
+import { MetaMaskConnector } from "wagmi/connectors/metaMask";
+import { ConnectKitProvider } from "connectkit";
+import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { zkSyncTestnet } from "wagmi/chains";
 
 type WagmiProviderType = {
-    children: React.ReactNode;
+  children: React.ReactNode;
 };
+const projectId = process.env.NEXT_PUBLIC_W3C_PID;
 
-const chains = [zkSyncTestnet];
-const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID;
+const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [zkSyncTestnet],
+  [
+    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY }),
+    publicProvider()
+  ]
+);
 
-const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
-const wagmiConfig = createConfig({
-    autoConnect: true,
-    connectors: w3mConnectors({ projectId, version: 2, chains }),
-publicClient,
+export const wagmiConfig = createConfig({
+  autoConnect: true,
+  publicClient,
+  webSocketPublicClient,
+  connectors: [
+    new MetaMaskConnector({
+      chains,
+    }),
+    new CoinbaseWalletConnector({
+      chains,
+      options: {
+        appName: "zknebula",
+        headlessMode: true,
+      },
+    }),
+    new WalletConnectConnector({
+      chains,
+      options: {
+        projectId: projectId,
+        showQrModal: true,
+      },
+    }),
+  ],
 });
 
-const ethereumClient = new EthereumClient(wagmiConfig, chains);
-
 const WagmiProvider = ({ children }: WagmiProviderType) => {
-return (
+  return (
     <>
-        <WagmiConfig config={wagmiConfig}>{children}</WagmiConfig>
-        <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+      <WagmiConfig config={wagmiConfig}>
+        <ConnectKitProvider>{children}</ConnectKitProvider>
+      </WagmiConfig>
     </>
-);
+  );
 };
 
 export default WagmiProvider;

@@ -27,6 +27,8 @@ interface ProposalProps {
 const Proposal: FC<ProposalProps> = ({ params: { slug }}) => {
     const proposal = getProposal(slug);
 
+    console.log(proposal);
+
     if(!proposal) 
         return notFound();
 
@@ -89,7 +91,7 @@ const Proposal: FC<ProposalProps> = ({ params: { slug }}) => {
                         </div>
                     </div>
 
-                    <p className='text-[.94rem] xs:text-[.96rem] sm:text-[1.02rem] md:text-[1.05rem] text-white/95 md:leading-[1.65rem] text-[#767a7e]'>{description}</p>
+                    <p className='text-[.94rem] xs:text-[.96rem] sm:text-[1.02rem] md:text-[1.05rem] md:leading-[1.65rem] text-[#767a7e]'>{description}</p>
                 </div>
 
                 {/* Vote Cast */}

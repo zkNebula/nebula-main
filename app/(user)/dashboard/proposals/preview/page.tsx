@@ -8,12 +8,30 @@ import PreviousButton from '@/app/components/previous-button/previous-button';
 import NotificationBox from '@/app/components/notification-box/notification-box';
 import Button from '@/app/components/button/button';
 import { capitalizeFirstLetter } from '@/app/lib/utils';
+import CustomConnectKit from '@/app/components/connectkit-custom-button/connectkit-custom-button';
+import { useAccount } from 'wagmi';
+import toast from 'react-hot-toast';
 
 
 function ProposalPreview() {
   const router = useRouter();
+  const { isConnected } = useAccount();
   const { newProposal } = useProposal();
   const body = draftToHtml(newProposal?.description);
+
+  function submitProposal() {
+    const isValid: boolean = Object.values(newProposal).every(value => Boolean(value));
+
+    if(isValid) {
+      try {
+        console.log("submit proposal");
+      } catch(error) {
+        console.log(error)
+      }
+    } else {
+      setTimeout(() => toast.error("Add a proposal"), 500);
+    }  
+  }
 
   return (
     <main className='grid md-md:grid-cols-[1fr,max-content] md-md:gap-x-6 lg:gap-x-9'>
@@ -39,13 +57,22 @@ function ProposalPreview() {
             Edit
         </Button>
 
-        <Button
-            role="submit proposal"
-            variant="accent"
-            className="w-full rounded-full"
-        >
-            Submit proposal
-        </Button>
+        {!isConnected ? (
+            <CustomConnectKit 
+                variant="accent" 
+                className="w-full ss:py-3 rounded-full" 
+            />
+        ) : (
+            <Button
+                type="submit"
+                role="preview proposal button"
+                variant="accent"
+                className="w-full ss:py-3 rounded-full"
+                onClick={submitProposal}
+            >
+                Submit proposal
+            </Button>
+        )}
       </aside>
     </main>
   )
